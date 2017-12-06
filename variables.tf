@@ -1,4 +1,8 @@
 # VPC variables
+variable "AWS_REGION" {
+  default = "us-east-2"
+}
+
 variable "name" {
   description = "Name to be used on all the resources as identifier"
   default     = ""
