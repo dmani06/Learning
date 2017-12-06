@@ -25,6 +25,17 @@ variable "instance_tenancy" {
   default     = "default"
 }
 
+variable "pub_cidr_blocks" {
+  description = "A list of public subnet cidr blocks"
+  default     = []
+}
+
+
+variable "pri_cidr_blocks" {
+  description = "A list of private subnet cidr blocks"
+  default     = []
+}
+
 variable "public_subnets" {
   description = "A list of public subnets inside the VPC."
   default     = []
@@ -36,7 +47,7 @@ variable "private_subnets" {
 }
 
 variable "azs" {
-  description = "Availability zones in the region"
+  description = "a list of availability zones in the region"
   default     = []
 }
 
