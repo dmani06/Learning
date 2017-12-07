@@ -4,12 +4,12 @@
 provider "aws" {
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
-  region     = "${var.region}"
+  aws_region     = "${var.aws_region}"
 }
 
 # Create VPC
 resource "aws_vpc" "dmvpc-test" {
-    cidr_block           = "${var.cidr}"
+    cidr_block           = "${var.cidr_block}"
     instance_tenancy     = "${var.instance_tenancy}"
     enable_dns_support   = "${var.enable_dns_support}"
     enable_dns_hostnames = "${var.enable_dns_hostnames}"
