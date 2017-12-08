@@ -48,7 +48,7 @@ resource "aws_subnet" "dmvpc-pri-sub" {
   }
 #create Internet gateway
 
-resource "aws_internet_gateway" " dmvpc-igw" {
+resource "aws_internet_gateway" "dmvpc-igw" {
   vpc_id ="${aws_vpc.dmvpc-test.id}"
 	tags {
 	    Name = "dmvpc-igw"
