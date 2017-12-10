@@ -4,12 +4,12 @@
 provider "aws" {
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
-  region     = "${var.region}"
+  aws_region     = "${var.aws_region}"
 }
 
 # Create VPC
 resource "aws_vpc" "dmvpc-test" {
-    cidr_block           = "${var.cidr}"
+    cidr_block           = "${var.cidr_block}"
     instance_tenancy     = "${var.instance_tenancy}"
     enable_dns_support   = "${var.enable_dns_support}"
     enable_dns_hostnames = "${var.enable_dns_hostnames}"
@@ -24,7 +24,7 @@ resource "aws_vpc" "dmvpc-test" {
 
 resource "aws_subnet" "dmvpc-pub-sub" {
   vpc_id               = "${aws_vpc.dmvpc-test.id}"
-  cidr_block           = "${element(var.pub_cidr_blocks,count.index)}"
+  cidr_block           = "${element(var.pub_cidr_blocks, count.index)}"
   availability_zone    = "us-east-2a"
   map_public_ip_on_launch  = "${var.map_public_ip_on_launch}"
   count=2
@@ -38,7 +38,7 @@ resource "aws_subnet" "dmvpc-pub-sub" {
 
 resource "aws_subnet" "dmvpc-pri-sub" {
   vpc_id               = "${aws_vpc.dmvpc-test.id}"
-  cidr_block           = "${element(var.pri_cidr_blocks, count,index)}"
+  cidr_block           = "${element(var.pri_cidr_blocks, count.index)}"
   availability_zone    = "us-east-2b"
   map_public_ip_on_launch ="${var.map_public_ip_on_launch}"
   count =2
@@ -48,7 +48,7 @@ resource "aws_subnet" "dmvpc-pri-sub" {
   }
 #create Internet gateway
 
-resource "aws_internet_gateway" " dmvpc-igw" {
+resource "aws_internet_gateway" "dmvpc-igw" {
   vpc_id ="${aws_vpc.dmvpc-test.id}"
 	tags {
 	    Name = "dmvpc-igw"

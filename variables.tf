@@ -15,7 +15,7 @@ variable "name" {
   default     = ""
 }
 
-variable "cidr" {
+variable "cidr_block" {
   description = "CIDR block for the VPC"
   default     = ""
 }
