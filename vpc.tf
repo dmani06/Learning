@@ -24,7 +24,7 @@ resource "aws_vpc" "dmvpc-test" {
 
 resource "aws_subnet" "dmvpc-pub-sub" {
   vpc_id               = "${aws_vpc.dmvpc-test.id}"
-  cidr_block           = "${element(var.pub_cidr_blocks,count.index)}"
+  cidr_block           = "${element(var.pub_cidr_blocks, count.index)}"
   availability_zone    = "us-east-2a"
   map_public_ip_on_launch  = "${var.map_public_ip_on_launch}"
   count=2
@@ -38,7 +38,7 @@ resource "aws_subnet" "dmvpc-pub-sub" {
 
 resource "aws_subnet" "dmvpc-pri-sub" {
   vpc_id               = "${aws_vpc.dmvpc-test.id}"
-  cidr_block           = "${element(var.pri_cidr_blocks, count,index)}"
+  cidr_block           = "${element(var.pri_cidr_blocks, count.index)}"
   availability_zone    = "us-east-2b"
   map_public_ip_on_launch ="${var.map_public_ip_on_launch}"
   count =2
